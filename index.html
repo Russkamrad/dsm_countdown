@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deutsche Schatzsucher Meisterschaft Countdown</title>
+  <meta name="description" content="Countdown, Video Hub, Musik, Fotoarchiv und Community-Bereich zur Deutschen Schatzsucher Meisterschaft." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="grain"></div>
+
+  <header class="topbar">
+    <div class="brand-mark">
+      <span class="coin">DSM</span>
+      <span data-i18n="brandSmall">Deutsche Schatzsucher Meisterschaft</span>
+    </div>
+
+    <nav class="top-actions" aria-label="Navigation">
+      <div class="language-wrapper">
+        <button class="icon-btn" id="langToggle" type="button" aria-label="Change language">🌐</button>
+        <div class="language-menu" id="languageMenu">
+          <button class="lang-btn active" type="button" data-lang="de">🇩🇪 DE</button>
+          <button class="lang-btn" type="button" data-lang="en">🇬🇧 EN</button>
+          <button class="lang-btn" type="button" data-lang="ru">🇷🇺 RU</button>
+        </div>
+      </div>
+      <button class="icon-btn" id="musicOpenBtn" type="button" aria-label="Music">🎵</button>
+      <a class="shop-link" href="https://www.3d-rk.com" target="_blank" rel="noopener noreferrer" data-i18n="shopBtn">Russkamrad Shop</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="hero card copper-border">
+      <div class="eyebrow" data-i18n="eyebrow">05–07 Juni 2026 • Campingpark Reinsfeld</div>
+      <h1>
+        <span data-i18n="titleTop">Countdown zur</span>
+        <strong data-i18n="titleMain">Deutschen Schatzsucher Meisterschaft</strong>
+      </h1>
+      <p class="hero-text" data-i18n="heroText">Von Freunden für Freunde. Ein inoffizieller Community-Countdown von Russkamrad.</p>
+
+      <div class="mode-switch">
+        <button class="mode-btn active" type="button" data-mode="countdown" data-i18n="countdownMode">Countdown</button>
+        <button class="mode-btn" type="button" data-mode="progress" data-i18n="progressMode">Fortschritt</button>
+      </div>
+
+      <section class="timer-panel" id="countdownPanel">
+        <div class="timer" id="timer">
+          <div class="time-card"><span id="days">00</span><p data-i18n="days">Tage</p></div>
+          <div class="time-card"><span id="hours">00</span><p data-i18n="hours">Stunden</p></div>
+          <div class="time-card"><span id="minutes">00</span><p data-i18n="minutes">Minuten</p></div>
+          <div class="time-card"><span id="seconds">00</span><p data-i18n="seconds">Sekunden</p></div>
+        </div>
+      </section>
+
+      <section class="progress-panel hidden" id="progressPanel">
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-meta">
+          <span id="progressPercent">0%</span>
+          <span id="progressText" data-i18n="progressText">Zeit bis zum DSM-Wochenende</span>
+        </div>
+      </section>
+    </section>
+
+    <section class="grid two-cols">
+      <article class="card info-card">
+        <h2 data-i18n="eventInfoTitle">Event-Infos</h2>
+        <ul>
+          <li data-i18n="eventLine1">Treffen: 05.06–07.06.2026</li>
+          <li data-i18n="eventLine2">Meisterschaft: Samstag, 06.06.2026</li>
+          <li data-i18n="eventLine3">Ort: Campingpark Reinsfeld</li>
+          <li data-i18n="eventLine4">Hinweis: Bitte offizielle Änderungen auf dsm-osburg.de prüfen.</li>
+        </ul>
+        <a class="text-link" href="https://dsm-osburg.de/" target="_blank" rel="noopener noreferrer" data-i18n="officialSiteBtn">Offizielle DSM-Seite öffnen</a>
+      </article>
+
+      <article class="card poll-card">
+        <h2 data-i18n="pollTitle">Was nimmst du mit?</h2>
+        <p data-i18n="pollText">Spaß-Umfrage für Sondler. Keine Anmeldung, nur lokal auf deinem Gerät.</p>
+        <div id="pollOptions" class="poll-options"></div>
+        <button class="secondary-btn" id="resetPollBtn" type="button" data-i18n="resetPoll">Meine Stimme zurücksetzen</button>
+      </article>
+    </section>
+
+    <section class="card video-hub">
+      <div class="section-head">
+        <div>
+          <h2 data-i18n="videoHubTitle">DSM Video Hub</h2>
+          <p data-i18n="videoHubText">Videos von Russkamrad und ausgewählten Sondler-Kanälen.</p>
+        </div>
+      </div>
+
+      <h3 data-i18n="russkamradVideosTitle">Russkamrad / Freunde</h3>
+      <div class="video-grid" id="russkamradVideos"></div>
+
+      <h3 data-i18n="communityVideosTitle">Weitere deutsche & englische Videos</h3>
+      <div class="video-grid" id="communityVideos"></div>
+    </section>
+
+    <section class="card photo-archive">
+      <div class="section-head">
+        <div>
+          <h2 data-i18n="photoArchiveTitle">Fotoarchiv</h2>
+          <p data-i18n="photoArchiveText">Platz für Bilder von früheren Meisterschaften und Treffen.</p>
+        </div>
+      </div>
+      <div class="photo-grid" id="photoGrid"></div>
+    </section>
+
+    <section class="grid two-cols community-area">
+      <article class="card comments-card">
+        <h2 data-i18n="commentsTitle">Nachrichten</h2>
+        <form id="commentForm" class="comment-form">
+          <input id="commentName" type="text" maxlength="32" data-i18n-placeholder="namePlaceholder" placeholder="Dein Name" required />
+          <textarea id="commentText" maxlength="300" rows="4" data-i18n-placeholder="commentPlaceholder" placeholder="Schreib etwas für die Community..." required></textarea>
+          <div class="form-row">
+            <span id="commentCounter">0/300</span>
+            <button class="primary-btn" id="commentSubmitBtn" type="submit" data-i18n="sendBtn">Senden</button>
+          </div>
+        </form>
+        <div id="commentsList" class="comments-list"></div>
+      </article>
+
+      <article class="card rating-card">
+        <h2 data-i18n="ratingTitle">Community Rating</h2>
+        <p data-i18n="ratingText">Wie sehr freust du dich auf DSM?</p>
+        <div class="stars" id="ratingStars" aria-label="Rating">
+          <button type="button" data-rating="1">★</button>
+          <button type="button" data-rating="2">★</button>
+          <button type="button" data-rating="3">★</button>
+          <button type="button" data-rating="4">★</button>
+          <button type="button" data-rating="5">★</button>
+        </div>
+        <div class="rating-result" id="ratingResult">0.0 / 5</div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer card">
+    <p data-i18n="credit">Website erstellt von einem Mitglied des Teams <b>russkamrad TURBORAY</b>.</p>
+    <p data-i18n="disclaimer">Inoffizieller Community-Countdown. Für verbindliche Informationen bitte die offizielle DSM-Webseite nutzen.</p>
+    <p><a href="https://www.3d-rk.com" target="_blank" rel="noopener noreferrer">www.3d-rk.com</a></p>
+  </footer>
+
+  <dialog class="music-dialog" id="musicDialog">
+    <div class="music-box">
+      <button class="close-btn" id="musicCloseBtn" type="button">×</button>
+      <h2 data-i18n="musicTitle">Musikbibliothek</h2>
+      <p data-i18n="musicText">Lege deine MP3-Dateien in assets/music und ändere die Liste in script.js.</p>
+      <div id="musicList" class="music-list"></div>
+      <audio id="audioPlayer" controls></audio>
+    </div>
+  </dialog>
+
+  <script src="translations.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
